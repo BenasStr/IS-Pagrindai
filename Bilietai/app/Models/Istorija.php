@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Istorija extends Model
 {
-    use HasFactory;
+    protected $table = 'istorija';
+    protected $fillable = ['RenginioPavadinimas', 'RenginioData', 'Kaina', 'RenginioVieta', 'BilietoNr', 'RenginioIvertinimas', 'fk_Pirkejasid_Pirkejas'];
+    protected $primaryKey = 'id_Istorija';
+    public $timestamps = false;
 }
