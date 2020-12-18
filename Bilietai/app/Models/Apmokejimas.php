@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Apmokejimas extends Model
 {
-    use HasFactory;
+    protected $table = 'apmokejimas';
+    public $fillable = ['ApmokejimoData', 'Suma', 'ApmokejimoBudas'];
+    protected $primaryKey = 'id_Apmokejimas';
+
+    public $timestamps = false;
 }
