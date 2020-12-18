@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pardavejas extends Model
 {
-    use HasFactory;
+    protected $table = 'pardavejas';
+    protected $fillable = ['ImonesPavadinimas', 'ImonesKodas', 'Adresas', 'ArPatvirtintas', 'Ivertinimas', 'RenginiuSkaicius', 'TelefonoNumeris'];
+    protected $primaryKey = 'id_Pardavejas';
+    public $timestamps = false;
 }
