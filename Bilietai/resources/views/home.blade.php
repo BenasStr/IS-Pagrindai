@@ -9,28 +9,27 @@
 
 <body>
     <!--Header-->
-<nav class="navbar navbar-expand-sm bg-warning navbar-light">
-    <ul class="navbar-nav">
-        <li class="nav-item">
+    <nav class="navbar navbar-expand-sm bg-warning navbar-light">
+        <a class="navbar-brand" href="{{ url('/') }}">
             <img src="{{ asset('/images/bee.png') }}" alt="bee" style="width:40px;height:30px;">
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="{{ url('/') }}">BEElietai</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-        </li>
-    </ul>
-</nav>
+            BEElietai
+        </a>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+            </ul>
 
+            <a href="{{ url('/login') }}" style="color: black; text-decoration: none">Login</a>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        @yield('content')
+    </div>
 </body>
 </html>
