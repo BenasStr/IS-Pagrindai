@@ -9,6 +9,7 @@ use App\Models\Pirkejas;
 use App\Models\Vartotojas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class VartotojasController extends Controller
 {
@@ -90,6 +91,7 @@ class VartotojasController extends Controller
 
                 $vartotojas->ElPastas = $ElPastas;
                 $vartotojas->Slaptazodis = $Slaptazodis;
+                $vartotojas->SukurimoData = Carbon::now();
                 $vartotojas->Tipas = 1;
                 $vartotojas->save();
                 break;
@@ -99,6 +101,7 @@ class VartotojasController extends Controller
 
                 $vartotojas->ElPastas = $ElPastas;
                 $vartotojas->Slaptazodis = $Slaptazodis;
+                $vartotojas->SukurimoData = Carbon::now();
                 $vartotojas->Tipas = 2;
                 $vartotojas->save();
                 break;
@@ -110,6 +113,7 @@ class VartotojasController extends Controller
 
                 $vartotojas->ElPastas = $ElPastas;
                 $vartotojas->Slaptazodis = $Slaptazodis;
+                $vartotojas->SukurimoData = Carbon::now();
                 $vartotojas->Tipas = 3;
                 $vartotojas->save();
                 $vartotojoID = $vartotojas->id_Vartotojas;
