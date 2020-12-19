@@ -26,8 +26,6 @@ class AdminController extends Controller
     }
 
     public function promoteEventAdmin(Request $request){
-        //echo $request->input('renginiuKelimas');
-
         $event = Renginys::all()
             ->where('id_Renginys', $request->input('renginiuKelimas'))
             ->first();
@@ -45,5 +43,18 @@ class AdminController extends Controller
         $event -> Prioritetas = 0;
         $event -> save();
         return redirect('admin/getEvents');
+    }
+
+    public function getUnconfirmedAccounts(){
+        $pardavejai = Pardavejas::where('ArPatvirtintas', 0)
+            ->get();
+        return view('AdminViews/unconfirmedAccountList', compact('pardavejai'));
+    }
+
+    public function confirmAccount(Request $request){
+        $pardavejas = Pardavejas::where('id_Pardavejas', $request->input('patvirtintiPaskyra'))->first();
+        $pardavejas->ArPatvirtintas = 1;
+        $pardavejas->save();
+        return redirect('/admin/unconfirmedAccounts');
     }
 }

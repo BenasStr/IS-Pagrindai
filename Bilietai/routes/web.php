@@ -24,6 +24,8 @@ Route::get('/admin/getEvents', [\App\Http\Controllers\AdminController::class, 'g
 Route::get('/admin/getUsers', [\App\Http\Controllers\AdminController::class, 'getUsersAdmin']);
 Route::get('/admin/promoteEvent', [\App\Http\Controllers\AdminController::class, 'promoteEventAdmin']);
 Route::get('/admin/blockEvent', [\App\Http\Controllers\AdminController::class, 'blockEventAdmin']);
+Route::get('/admin/unconfirmedAccounts', [\App\Http\Controllers\AdminController::class, 'getUnconfirmedAccounts']);
+Route::get('/admin/confirmAccount', [\App\Http\Controllers\AdminController::class, 'confirmAccount']);
 
 //----------------------------User based routes----------------------------------------
 Route::get('login', [\App\Http\Controllers\VartotojasController::class, 'loginload']);
