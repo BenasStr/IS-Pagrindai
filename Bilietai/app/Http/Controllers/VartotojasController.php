@@ -18,7 +18,6 @@ class VartotojasController extends Controller
     {
         return view('login');
     }
-
     public function login(Request $request)
     {
         $ElPastas = $request->input("pastoAdresas");
@@ -49,7 +48,7 @@ class VartotojasController extends Controller
     {
         session()->forget('id');
         session()->forget('tipas');
-        return redirect('/')->with('atsijungeTeisingai', 'Sėkmingai atsijungta!');
+        return redirect('/')->with('success', 'Sėkmingai atsijungta!');
     }
     public function registerload()
     {
