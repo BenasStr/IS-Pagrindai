@@ -29,6 +29,17 @@
                     <td>-</td>
                     <td>-</td>
                 @endif
+                <td>
+                    <form method="get" action="{{url('/admin/editUserPirkejas')}}">
+                        <button class="btn btn-success" type="submit" value="{{$data->id_Vartotojas}}" name="editUserPirkejas">Edit</button>
+                    </form>
+                    </td>
+                <td>
+                    <form method="get" action="{{url('/admin/deleteUser')}}">
+                        <button class="btn btn-danger" type="submit" value="{{$data->id_Vartotojas}}">Delete</button>
+                    </form>
+
+                </td>
             </tr>
         @endforeach
     </table>
@@ -69,6 +80,11 @@
                     <td>-</td>
                     <td>-</td>
                 @endif
+                <td>
+                    <form method="get" action="{{url('/admin/editUserPardavejas')}}">
+                        <button class="btn btn-success" type="submit" value="{{$data->id_Vartotojas}}" name="editUserPardavejas">Edit</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table>
