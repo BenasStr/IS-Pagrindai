@@ -17,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\RenginysController::class, 'getAllEvents']);
 
 //----------------------------Admin based routes--------------------------------------
-//Route::get('/admin', [\App\Http\Controllers\VartotojasController::])
+Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index']);
+Route::get('/admin/getEvents', [\App\Http\Controllers\AdminController::class, 'getEvents']);
