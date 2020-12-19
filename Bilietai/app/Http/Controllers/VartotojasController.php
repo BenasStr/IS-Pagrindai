@@ -78,7 +78,7 @@ class VartotojasController extends Controller
         {
             if($pastas->ElPastas == $ElPastas)
             {
-                return redirect('register')->with('tokspatspastoadresas', 'Pašto adresas jau panaudotas!');
+                return redirect('register')->with('danger', 'Pašto adresas jau panaudotas!');
             }
         }
 
@@ -96,13 +96,14 @@ class VartotojasController extends Controller
                 break;
 //          Pardavejas
             case '2':
-                $vartotojas = new Vartotojas();
 
+                $vartotojas = new Vartotojas();
                 $vartotojas->ElPastas = $ElPastas;
                 $vartotojas->Slaptazodis = $Slaptazodis;
                 $vartotojas->SukurimoData = Carbon::now();
                 $vartotojas->Tipas = 2;
                 $vartotojas->save();
+
                 break;
 //          Vartotojas
             case '3':
