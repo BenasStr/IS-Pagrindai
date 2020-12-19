@@ -23,6 +23,7 @@ Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'indexAdmin'
 Route::get('/admin/getEvents', [\App\Http\Controllers\AdminController::class, 'getEventsAdmin']);
 Route::get('/admin/getUsers', [\App\Http\Controllers\AdminController::class, 'getUsersAdmin']);
 Route::get('/admin/promoteEvent', [\App\Http\Controllers\AdminController::class, 'promoteEventAdmin']);
+Route::get('/admin/blockEvent', [\App\Http\Controllers\AdminController::class, 'blockEventAdmin']);
 
 //----------------------------User based routes----------------------------------------
 Route::get('login', [\App\Http\Controllers\VartotojasController::class, 'loginload']);
