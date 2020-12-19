@@ -23,6 +23,11 @@
                 <td>{{$data->NuolaidosKodai}}</td>
                 <td>{{$data->Ivertinimas}}</td>
                 <td>{{$data->Prioritetas}}</td>
+                <td>
+                    <form method="get" action="{{url('admin/promoteEvent')}}">
+                        <button class="btn btn-success" type="submit" name="renginiuKelimas" value="{{$data->id_Renginys}}">Iškelti</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table>

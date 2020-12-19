@@ -24,4 +24,16 @@ class AdminController extends Controller
         $pardavejai = Vartotojas::with('pardavejas')->where('Tipas', 2)->get();
         return view('AdminViews/usersAdmin', compact('pirkejai', 'pardavejai'));
     }
+
+    public function promoteEvent(Request $request){
+        //echo $request->input('renginiuKelimas');
+
+        $event = Renginys::all()
+            ->where('id_Renginys', $request->input('renginiuKelimas'))
+            ->first();
+
+        $event -> Prioritetas = 11;
+        $event -> save();
+        return redirect('admin/getEvents');
+    }
 }
