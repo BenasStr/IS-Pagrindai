@@ -17,4 +17,12 @@ class AdminController extends Controller
         $events = Renginys::all();
         return view('AdminViews/eventsAdmin', compact('events'));
     }
+
+    public function getUsers(){
+        $pirkejai = Vartotojas::all()
+            ->where('Tipas', 1);
+        $pardavejai = Vartotojas::all()
+            ->where('Tipas', 2);
+        return view('AdminViews/usersAdmin', compact('pirkejai', 'pardavejai'));
+    }
 }

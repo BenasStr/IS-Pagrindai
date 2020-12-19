@@ -1,7 +1,7 @@
 @extends('AdminViews/index')
 @section('adminContent')
     <table class="table">
-        <tr>
+        <tr class="table-warning">
             <td>Pavadinimas</td>
             <td>Data</td>
             <td>Mietsas, adresas</td>
