@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 //----------------------------Event based routes--------------------------------------
 Route::get('/', [\App\Http\Controllers\RenginysController::class, 'getAllEvents']);
+
+Route::get('login', [\App\Http\Controllers\VartotojasController::class, 'loginload']);

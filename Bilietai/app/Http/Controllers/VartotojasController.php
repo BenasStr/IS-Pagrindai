@@ -8,4 +8,9 @@ use Illuminate\Http\Request;
 class VartotojasController extends Controller
 {
     //
+    public function loginload()
+    {
+        return view('login');
+    }
+
 }
