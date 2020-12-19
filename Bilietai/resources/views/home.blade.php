@@ -24,7 +24,7 @@
                 </li>
             </ul>
 
-            <a href="{{ url('/login') }}" style="color: black; text-decoration: none">Login</a>
+            <a href="{{ url('/login') }}" style="color: black; text-decoration: none">prisijungti</a>
         </div>
     </nav>
 
