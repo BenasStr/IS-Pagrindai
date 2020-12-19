@@ -15,7 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 //----------------------------Event based routes--------------------------------------
 Route::get('/', [\App\Http\Controllers\RenginysController::class, 'getAllEvents']);
+Route::get('/event/{id}', [\App\Http\Controllers\RenginysController::class, 'getEvent'])->name('event');
+Route::post('/search', [\App\Http\Controllers\RenginysController::class, 'getFilteredEvents']);
 
+//----------------------------Admin based routes--------------------------------------
+Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'indexAdmin']);
+Route::get('/admin/getEvents', [\App\Http\Controllers\AdminController::class, 'getEventsAdmin']);
+Route::get('/admin/getUsers', [\App\Http\Controllers\AdminController::class, 'getUsersAdmin']);
+Route::get('/admin/promoteEvent', [\App\Http\Controllers\AdminController::class, 'promoteEventAdmin']);
+
+//----------------------------User based routes----------------------------------------
 Route::get('login', [\App\Http\Controllers\VartotojasController::class, 'loginload']);
 Route::post('loginconfirm', [\App\Http\Controllers\VartotojasController::class, 'login']);
 Route::get('logout', [\App\Http\Controllers\VartotojasController::class, 'logout']);

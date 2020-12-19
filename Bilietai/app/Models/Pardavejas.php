@@ -11,4 +11,8 @@ class Pardavejas extends Model
     protected $fillable = ['ImonesPavadinimas', 'ImonesKodas', 'Adresas', 'ArPatvirtintas', 'Ivertinimas', 'RenginiuSkaicius', 'TelefonoNumeris'];
     protected $primaryKey = 'id_Pardavejas';
     public $timestamps = false;
+
+    public function vartotojas(){
+        return $this->hasMany(Vartotojas::class, 'fk_Pardavejasid_Pardavejas');
+    }
 }
