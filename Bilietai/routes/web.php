@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\RenginysController::class, 'getAllEvents']);
 Route::get('/event/{id}', [\App\Http\Controllers\RenginysController::class, 'getEvent'])->name('event');
 Route::post('/search', [\App\Http\Controllers\RenginysController::class, 'getFilteredEvents']);
+
+//----------------------------Admin based routes--------------------------------------
+Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index']);
+Route::get('/admin/getEvents', [\App\Http\Controllers\AdminController::class, 'getEvents']);
+Route::get('/admin/getUsers', [\App\Http\Controllers\AdminController::class, 'getUsers']);
+Route::get('/admin/promoteEvent', [\App\Http\Controllers\AdminController::class, 'promoteEvent']);
