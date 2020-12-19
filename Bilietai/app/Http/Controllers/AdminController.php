@@ -10,6 +10,11 @@ use App\Models\Pardavejas;
 
 class AdminController extends Controller
 {
+    public function settings()
+    {
+        return view('Settings/adminSettings');
+    }
+
     public function indexAdmin(){
         return view('AdminViews/index');
     }
