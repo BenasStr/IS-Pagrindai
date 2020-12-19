@@ -23,3 +23,10 @@ Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'indexAdmin'
 Route::get('/admin/getEvents', [\App\Http\Controllers\AdminController::class, 'getEventsAdmin']);
 Route::get('/admin/getUsers', [\App\Http\Controllers\AdminController::class, 'getUsersAdmin']);
 Route::get('/admin/promoteEvent', [\App\Http\Controllers\AdminController::class, 'promoteEventAdmin']);
+
+//----------------------------User based routes----------------------------------------
+Route::get('login', [\App\Http\Controllers\VartotojasController::class, 'loginload']);
+Route::post('loginconfirm', [\App\Http\Controllers\VartotojasController::class, 'login']);
+Route::get('logout', [\App\Http\Controllers\VartotojasController::class, 'logout']);
+Route::get('register', [\App\Http\Controllers\VartotojasController::class, 'registerload']);
+Route::post('naujasVartotojas', [\App\Http\Controllers\VartotojasController::class, 'registerNew']);
