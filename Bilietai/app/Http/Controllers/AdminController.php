@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Vartotojas;
 use App\Models\Renginys;
+use App\Models\Pardavejas;
 
 class AdminController extends Controller
 {
@@ -19,10 +20,8 @@ class AdminController extends Controller
     }
 
     public function getUsers(){
-        $pirkejai = Vartotojas::all()
-            ->where('Tipas', 1);
-        $pardavejai = Vartotojas::all()
-            ->where('Tipas', 2);
+        $pirkejai = Vartotojas::with('pirkejas')->where('Tipas', 1)->get();
+        $pardavejai = Vartotojas::with('pardavejas')->where('Tipas', 2)->get();
         return view('AdminViews/usersAdmin', compact('pirkejai', 'pardavejai'));
     }
 }
