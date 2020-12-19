@@ -23,11 +23,29 @@
                     <a class="nav-link" href="#">Link</a>
                 </li>
             </ul>
-
-            <a href="{{ url('/login') }}" style="color: black; text-decoration: none">Login</a>
+            @if (session()->get('id') == null)
+                <a href="{{ url('/login') }}" style="color: black; text-decoration: none">Login</a>
+            @else
+                <a href="{{ url('/logout') }}" style="color: black; text-decoration: none">Logout</a>
+            @endif
         </div>
     </nav>
 
+    @if (session('prisijungeSekmingai'))
+        <div class="alert alert-success">
+            <h3>{{session('prisijungeSekmingai')}}</h3>
+        </div>
+    @endif
+    @if (session('prisijungeNesekmingai'))
+        <div class="alert alert-danger">
+            <h3>{{session('prisijungeNesekmingai')}}</h3>
+        </div>
+    @endif
+    @if (session('atsijungeTeisingai'))
+        <div class="alert alert-success">
+            <h3>{{session('atsijungeTeisingai')}}</h3>
+        </div>
+    @endif
     <div class="container-fluid">
         @yield('content')
     </div>

@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\RenginysController::class, 'getAllEvents']);
 
 Route::get('login', [\App\Http\Controllers\VartotojasController::class, 'loginload']);
+Route::post('loginconfirm', [\App\Http\Controllers\VartotojasController::class, 'login']);
+Route::get('logout', [\App\Http\Controllers\VartotojasController::class, 'logout']);
+Route::get('register', [\App\Http\Controllers\VartotojasController::class, 'registerload']);
+Route::post('naujasVartotojas', [\App\Http\Controllers\VartotojasController::class, 'registerNew']);
