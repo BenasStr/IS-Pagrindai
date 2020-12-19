@@ -10,6 +10,12 @@ class RenginysController extends Controller
 {
     public function getAllEvents() {
         $allEvents = Renginys::all();
-        return view('events', compact('allEvents'));
+        $count = Renginys::all()->count();
+        return view('events/events', compact(['allEvents', 'count']));
+    }
+
+    public function getEvent($id) {
+        $event = Renginys::all()->where('id_Renginys', $id)->first();
+        return view('events/event', compact('event'));
     }
 }
