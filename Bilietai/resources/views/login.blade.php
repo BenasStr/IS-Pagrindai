@@ -2,6 +2,7 @@
 
 @section('content')
 
+    <h1>Prisijungimas</h1>
     <form action="{{ url('loginconfirm') }}" method="post">
         @csrf
         <table class="centered">

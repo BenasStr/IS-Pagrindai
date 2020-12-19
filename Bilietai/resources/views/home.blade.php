@@ -31,21 +31,17 @@
         </div>
     </nav>
 
-    @if (session('prisijungeSekmingai'))
+    @if (session('success'))
         <div class="alert alert-success">
-            <h3>{{session('prisijungeSekmingai')}}</h3>
+            <h3>{{session('success')}}</h3>
         </div>
     @endif
-    @if (session('prisijungeNesekmingai'))
+    @if (session('danger'))
         <div class="alert alert-danger">
-            <h3>{{session('prisijungeNesekmingai')}}</h3>
+            <h3>{{session('danger')}}</h3>
         </div>
     @endif
-    @if (session('atsijungeTeisingai'))
-        <div class="alert alert-success">
-            <h3>{{session('atsijungeTeisingai')}}</h3>
-        </div>
-    @endif
+
     <div class="container-fluid">
         @yield('content')
     </div>
