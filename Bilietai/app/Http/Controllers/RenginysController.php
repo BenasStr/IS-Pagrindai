@@ -34,8 +34,4 @@ class RenginysController extends Controller
         $count = count($events);
         return view('events/events', compact(['events', 'count']));
     }
-
-    public function getEventFeedback(Request $request) {
-        
-    }
 }

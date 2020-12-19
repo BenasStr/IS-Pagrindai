@@ -23,6 +23,6 @@
         <div class="col-sm-6 text-center"></div>
     </div>
     <div class="row">
-        <a class="btn btn-success" href="{{ route('feedback', $events[$i]->id_Renginys ) }}">Peržiūrėti</a>
+        <a class="btn btn-success" href="{{ route('feedback', $event->id_Renginys ) }}" style="position: absolute; right: 40px;">Peržiūrėti atsiliepimus</a>
     </div>
 @endsection
