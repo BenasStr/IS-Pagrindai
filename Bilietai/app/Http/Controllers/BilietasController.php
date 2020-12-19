@@ -7,5 +7,7 @@ use Illuminate\Http\Request;
 
 class BilietasController extends Controller
 {
-    //
+    public function getTickets() {
+
+    }
 }

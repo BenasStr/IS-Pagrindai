@@ -13,4 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {return view('tickets');});
+//----------------------------Event based routes--------------------------------------
+Route::get('/', [\App\Http\Controllers\RenginysController::class, 'getAllEvents']);
