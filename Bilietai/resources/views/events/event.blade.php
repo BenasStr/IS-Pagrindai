@@ -22,4 +22,7 @@
         <div class="col-sm-6 text-center">{{ $event->Aprasymas }}</div>
         <div class="col-sm-6 text-center"></div>
     </div>
+    <div class="row">
+        <a class="btn btn-success" href="{{ route('feedback', $events[$i]->id_Renginys ) }}">Peržiūrėti</a>
+    </div>
 @endsection

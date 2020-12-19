@@ -11,4 +11,8 @@ class Renginys extends Model
     protected $fillable = ['Data', 'Aprasymas', 'Prioritetas', 'Miestas', 'Adresas', 'Pavadinimas', 'LaisvuVietuSkaicius', 'Ivertinimas', 'PradziosLaikas', 'PabaigosLaikas', 'NuolaidosKodai', 'fk_Pardavejasid_Pardavejas'];
     protected $primaryKey = 'id_Renginys';
     public $timestamps = false;
+
+    public function atsiliepimas() {
+        return $this->hasMany(Atsiliepimas::class, 'fk_Renginysid_Renginys');
+    }
 }

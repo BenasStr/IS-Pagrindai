@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\RenginysController::class, 'getAllEvents']);
 Route::get('/event/{id}', [\App\Http\Controllers\RenginysController::class, 'getEvent'])->name('event');
 Route::post('/search', [\App\Http\Controllers\RenginysController::class, 'getFilteredEvents']);
+Route::get('/feedback/{id}', [\App\Http\Controllers\RenginysController::class, 'getEventFeedback'])->name('feedback');

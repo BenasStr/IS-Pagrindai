@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Renginys;
+use App\Models\Atsiliepimas;
+use App\Models\Vartotojas;
 
 class RenginysController extends Controller
 {
@@ -31,5 +33,9 @@ class RenginysController extends Controller
         }
         $count = count($events);
         return view('events/events', compact(['events', 'count']));
+    }
+
+    public function getEventFeedback(Request $request) {
+        
     }
 }
