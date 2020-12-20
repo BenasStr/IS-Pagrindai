@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Pirkejas;
 use Illuminate\Http\Request;
 use App\Models\Atsiliepimas;
-use App\Models\Pardavejas;
+use App\Models\Pirkejas;
 use App\Models\Vartotojas;
 
 class AtsiliepimasController extends Controller

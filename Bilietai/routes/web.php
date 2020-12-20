@@ -29,9 +29,14 @@ Route::get('/admin/blockEvent', [\App\Http\Controllers\AdminController::class, '
 Route::get('/admin/unconfirmedAccounts', [\App\Http\Controllers\AdminController::class, 'getUnconfirmedAccounts']);
 Route::get('/admin/confirmAccount', [\App\Http\Controllers\AdminController::class, 'confirmAccount']);
 Route::get('/admin/editUserPirkejas', [\App\Http\Controllers\AdminController::class, 'getDataForEditPirkejasAdmin']);
-Route::get('/admin/deleteUser', [\App\Http\Controllers\AdminController::class, 'deleteUserAdmin']);
+Route::get('/admin/deleteUserPirkejas', [\App\Http\Controllers\AdminController::class, 'deleteUserPirkejasAdmin']);
 Route::get('/admin/editUserPardavejas', [\App\Http\Controllers\AdminController::class, 'getDataForEditPardavejasAdmin']);
 Route::post('confirmEditPardavejas', [\App\Http\Controllers\AdminController::class, 'confirmEditPardavejas']);
+Route::post('confirmEditPirkejas', [\App\Http\Controllers\AdminController::class, 'confirmEditPirkejas']);
+Route::get('/admin/deleteUserPardavejas', [\App\Http\Controllers\AdminController::class, 'deleteUserPardavejasAdmin']);
+
+//----------------------------Cart based routes--------------------------------------
+Route::get('/cart/{id_cart}', [\App\Http\Controllers\KrepselisController::class, 'getTickets'])->name('cart');
 
 //----------------------------Cart based routes--------------------------------------
 Route::get('/cart/{id_cart}', [\App\Http\Controllers\KrepselisController::class, 'getTickets'])->name('cart');
