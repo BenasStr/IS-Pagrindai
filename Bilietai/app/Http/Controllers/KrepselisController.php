@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Krepselis;
 use App\Models\Bilietas;
 use App\Models\Renginys;
+use function PHPUnit\Framework\isEmpty;
 
 class KrepselisController extends Controller
 {
@@ -16,6 +17,9 @@ class KrepselisController extends Controller
             return redirect('/')->with('danger', 'Krepšelis yra tuščias!');
         }
         $tickets = Bilietas::where('fk_Krepselisid_Krepselis', $cart->id_Krepselis)->get();
+        if(count($tickets) == 0) {
+            return redirect('/')->with('danger', 'Krepšelis yra tuščias');
+        }
         $events_ids = Bilietas::where('fk_Krepselisid_Krepselis', $cart->id_Krepselis)->get('fk_Renginysid_Renginys')->unique('fk_Renginysid_Renginys');
         $events = array();
         foreach ($events_ids as $id) {
@@ -56,5 +60,22 @@ class KrepselisController extends Controller
         return redirect('/')->with('success', 'Sėkmingai panaikintas krepšelis!');
     }
 
+    public function addTicket($id) {
+        $tickets = Bilietas::where('fk_Renginysid_Renginys', $id)->where('fk_Krepselisid_Krepselis', null)->first();
+        if($tickets == null) {
+            return back()->with('danger', 'Daugiau bilietų renginiui nebeturime');
+        }
+        $cart_id = Krepselis::where('fk_Pirkejasid_Pirkejas', session()->get('id'))->get('id_Krepselis')->first();
+        $tickets->fk_Krepselisid_Krepselis = $cart_id->id_Krepselis;
+        $tickets->save();
+        return redirect(route('cart', session()->get('id')));
+    }
 
+    public function removeTicket($id) {
+        $cart_id = Krepselis::where('fk_Pirkejasid_Pirkejas', session()->get('id'))->get('id_Krepselis')->first();
+        $tickets = Bilietas::where('fk_Renginysid_Renginys', $id)->where('fk_Krepselisid_Krepselis', $cart_id->id_Krepselis)->first();
+        $tickets->fk_Krepselisid_Krepselis = null;
+        $tickets->save();
+        return redirect(route('cart', session()->get('id')));
+    }
 }

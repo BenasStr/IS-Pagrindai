@@ -37,6 +37,8 @@ Route::post('confirmEditPardavejas', [\App\Http\Controllers\AdminController::cla
 Route::get('/cart/{id_cart}', [\App\Http\Controllers\KrepselisController::class, 'getTickets'])->name('cart');
 Route::get('/addToCart/{id}', [\App\Http\Controllers\KrepselisController::class, 'addToCart'])->name('addToCart');
 Route::get('/deleteCart/{id}', [\App\Http\Controllers\KrepselisController::class, 'deleteCart'])->name('deleteCart');
+Route::get('/addTicket/{id}', [\App\Http\Controllers\KrepselisController::class, 'addTicket'])->name('addTicket');
+Route::get('/removeTicket/{id}', [\App\Http\Controllers\KrepselisController::class, 'removeTicket'])->name('removeTicket');
 
 //----------------------------User based routes----------------------------------------
 Route::get('login', [\App\Http\Controllers\VartotojasController::class, 'loginload']);
