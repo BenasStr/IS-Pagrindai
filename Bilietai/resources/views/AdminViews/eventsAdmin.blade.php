@@ -28,6 +28,11 @@
                         <button class="btn btn-success" type="submit" name="renginiuKelimas" value="{{$data->id_Renginys}}">Iškelti</button>
                     </form>
                 </td>
+                <td>
+                    <form method="get" action="{{url('admin/blockEvent')}}">
+                        <button class="btn btn-danger" type="submit" name="renginiuBlokavimas" value="{{$data->id_Renginys}}">Blokuoti</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table>

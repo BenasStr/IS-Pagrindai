@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class PardavejasController extends Controller
 {
-    //
+    public function settings()
+    {
+        return view('Settings/sellerSettings');
+    }
 }

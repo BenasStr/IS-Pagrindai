@@ -23,10 +23,40 @@
                     <a class="nav-link" href="#">Link</a>
                 </li>
             </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    @if(session()->get('tipas') == 1)
+                        <a class="nav-link" href="{{ url('settings1') }}" style="color: black; text-decoration: none">Nustatymai</a>
+                    @endif
+                    @if(session()->get('tipas') == 2)
+                        <a class="nav-link" href="{{ url('settings2') }}" style="color: black; text-decoration: none">Nustatymai</a>
+                    @endif
+                    @if(session()->get('tipas') == 3)
+                        <a class="nav-link" href="{{ url('settings3') }}" style="color: black; text-decoration: none">Nustatymai</a>
+                    @endif
+                </li>
+                <li class="nav-item">
+                    @if (session()->get('id') == null)
+                        <a class="nav-link" href="{{ url('/login') }}" style="color: black; text-decoration: none">Login</a>
+                    @else
+                        <a class="nav-link" href="{{ url('/logout') }}" style="color: black; text-decoration: none">Logout</a>
+                    @endif
+                </li>
+            </ul>
 
-            <a href="{{ url('/login') }}" style="color: black; text-decoration: none">prisijungti</a>
         </div>
     </nav>
+
+    @if (session('success'))
+        <div class="alert alert-success">
+            <h3>{{session('success')}}</h3>
+        </div>
+    @endif
+    @if (session('danger'))
+        <div class="alert alert-danger">
+            <h3>{{session('danger')}}</h3>
+        </div>
+    @endif
 
     <div class="container-fluid">
         @yield('content')
