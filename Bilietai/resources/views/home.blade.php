@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="{{ route('cart', 1 ) }}">Krepšelis</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
