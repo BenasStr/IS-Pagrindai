@@ -11,9 +11,6 @@
             <label for="createDate">Sukūrimo data:</label>
             <input type="date" class="form-control" value="{{$user->SukurimoData}}" name="createDate">
         </div>
-
-        <!--Idet pardavejo fkid-->
-
         <div class="form-group">
             <label for="code">Imones kodas:</label>
             <input type="text" class="form-control" value="{{$user->pardavejas["ImonesKodas"]}}" name="code">
@@ -27,7 +24,10 @@
             <input type="number" step="1" min="0" class="form-control" value="{{$user->pardavejas["RenginiuSkaicius"]}}" name="eventNum">
         </div>
         <div class="form-group">
-            <button type="submit" name="submitEditPardavejas">Submit</button>
+            <button class="btn btn-success" type="submit" name="submitEditPardavejas">Submit</button>
         </div>
+    </form>
+    <form method="get" action="{{url('/admin/deleteUserPardavejas')}}">
+        <button class="btn btn-danger" type="submit" value="{{$user->id_Vartotojas}}" name="deleteUserPirkejas">Delete</button>
     </form>
 @endsection

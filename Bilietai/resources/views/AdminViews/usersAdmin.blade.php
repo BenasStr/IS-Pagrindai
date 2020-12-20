@@ -34,12 +34,6 @@
                         <button class="btn btn-success" type="submit" value="{{$data->id_Vartotojas}}" name="editUserPirkejas">Edit</button>
                     </form>
                     </td>
-                <td>
-                    <form method="get" action="{{url('/admin/deleteUser')}}">
-                        <button class="btn btn-danger" type="submit" value="{{$data->id_Vartotojas}}">Delete</button>
-                    </form>
-
-                </td>
             </tr>
         @endforeach
     </table>
