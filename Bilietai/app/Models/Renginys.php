@@ -14,5 +14,8 @@ class Renginys extends Model
 
     public function atsiliepimas() {
         return $this->hasMany(Atsiliepimas::class, 'fk_Renginysid_Renginys');
+  
+    public function bilietas() {
+        return $this->hasMany(Bilietas::class, "fk_Renginysid_Renginys");
     }
 }

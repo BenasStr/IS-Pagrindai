@@ -11,4 +11,8 @@ class Pirkejas extends Model
     protected $fillable = ['Taskai', 'NaujienlaiskioPrenumerata', 'Amzius', 'TelefonoNumeris', 'Lytis', 'fk_Vartotojasid_Vartotojas', 'fk_Apmokejimasid_Apmokejimas'];
     protected $primaryKey = 'id_Pirkejas';
     public $timestamps = false;
+
+    public function vartotojas(){
+        return $this->belongsTo(Vartotojas::class, 'fk_Vartotojasid_Vartotojas');
+    }
 }
