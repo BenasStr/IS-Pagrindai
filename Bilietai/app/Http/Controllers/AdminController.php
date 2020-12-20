@@ -87,7 +87,7 @@ class AdminController extends Controller
     }
 
     public function getUsersAdmin(){
-        $pirkejai = Vartotojas::with('pirkejas')->where('Tipas', 1)->get();
+        $pirkejai = Vartotojas::with('pirkejas')->where('Tipas', 3)->get();
         $pardavejai = Vartotojas::with('pardavejas')->where('Tipas', 2)->get();
         return view('AdminViews/usersAdmin', compact('pirkejai', 'pardavejai'));
     }
@@ -191,4 +191,43 @@ class AdminController extends Controller
         $user->delete();
         return redirect('/admin/getUsers');
     }
+
+    public function getFilteredUsersAdmin(Request $request){
+//        $key = "/".$request->input('search')."/i";
+//        $allEvents = Renginys::all();
+//        $events = array();
+//        foreach ($allEvents as $event) {
+//            $name = $event->Pavadinimas;
+//            if(preg_match($key, $name)){
+//                array_push($events, $event);
+//            }
+//        }
+//        $count = count($events);
+//        return view('events/events', compact(['events', 'count']));
+        $key = "/".$request->input('searchAdmin')."/i";
+        $allUsers = Vartotojas::all();
+        //echo $allUsers;
+        $usersPirkejai = array();
+        $usersPardavejai = array();
+        foreach ($allUsers as $user){
+            //echo $user."\n";
+            $name = $user->Vardas;
+            $surname = $user->Pavarde;
+            if(preg_match($key, $name) or preg_match($key, $surname)){ //or preg_match($key, $surname)
+
+                if ($user->Tipas == 2)
+                    array_push($usersPardavejai, $user);
+
+                if ($user->Tipas == 3)
+                    array_push($usersPirkejai, $user);
+            }
+        }
+        $countPirkejai = count($usersPirkejai);
+        $countPardavejai = count($usersPardavejai);
+        return view('/AdminViews/filteredUsersAdmin', compact(['usersPirkejai', 'usersPardavejai', 'countPirkejai', 'countPardavejai']));
+    }
+
+//    public function deleteReviewsAdmin(Request $request){
+//
+//    }
 }
