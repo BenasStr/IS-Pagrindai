@@ -126,6 +126,7 @@ class VartotojasController extends Controller
                 $vartotojoID = $vartotojas->id_Vartotojas;
 
                 $pirkejas->fk_Vartotojasid_Vartotojas = $vartotojoID;
+                $pirkejas->NaujienlaiskioPrenumerata = 0;
                 $pirkejas->save();
                 $pirkejoID = $pirkejas->id_Pirkejas;
 
