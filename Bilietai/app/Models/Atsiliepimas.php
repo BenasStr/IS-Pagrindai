@@ -12,4 +12,8 @@ class Atsiliepimas extends Model
     protected $primaryKey = 'id_Atsiliepimas';
 
     public $timestamps = false;
+
+    public function renginys() {
+        return $this->belongsTo(Renginys::class, 'fk_Renginysid_Renginys');
+    }
 }

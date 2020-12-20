@@ -12,6 +12,9 @@ class Renginys extends Model
     protected $primaryKey = 'id_Renginys';
     public $timestamps = false;
 
+    public function atsiliepimas() {
+        return $this->hasMany(Atsiliepimas::class, 'fk_Renginysid_Renginys');
+  
     public function bilietas() {
         return $this->hasMany(Bilietas::class, "fk_Renginysid_Renginys");
     }
