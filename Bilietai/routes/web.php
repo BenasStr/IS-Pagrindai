@@ -33,6 +33,7 @@ Route::get('/admin/editUserPardavejas', [\App\Http\Controllers\AdminController::
 Route::post('confirmEditPardavejas', [\App\Http\Controllers\AdminController::class, 'confirmEditPardavejas']);
 Route::post('confirmEditPirkejas', [\App\Http\Controllers\AdminController::class, 'confirmEditPirkejas']);
 Route::get('/admin/deleteUserPardavejas', [\App\Http\Controllers\AdminController::class, 'deleteUserPardavejasAdmin']);
+Route::post('/admin/filteredUserRequest', [\App\Http\Controllers\AdminController::class, 'getFilteredUsersAdmin']);
 
 //----------------------------Cart based routes--------------------------------------
 Route::get('/cart/{id_cart}', [\App\Http\Controllers\KrepselisController::class, 'getTickets'])->name('cart');

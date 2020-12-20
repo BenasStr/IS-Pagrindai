@@ -4,9 +4,9 @@
     <!--VARTOTOJU PAIESKAI-->
 <div class="row" style="margin-top: 10px; margin-bottom: 10px; margin-left: 25px">
     <div class="col-sm-2">
-        <form class="form-inline" action="{{ url('/') }}" method="post">
+        <form class="form-inline" action="{{ url('/admin/filteredUserRequest') }}" method="post">
             {{ csrf_field() }}
-            <input class="form-control mr-sm-2" type="text" placeholder="Type keyword" name="search">
+            <input class="form-control mr-sm-2" type="text" placeholder="Type keyword" name="searchAdmin">
             <button class="btn btn-success" type="submit">Ieškoti</button>
         </form>
     </div>
