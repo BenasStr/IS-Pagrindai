@@ -28,6 +28,12 @@ Route::get('/admin/promoteEvent', [\App\Http\Controllers\AdminController::class,
 //----------------------------Cart based routes--------------------------------------
 Route::get('/cart/{id_cart}', [\App\Http\Controllers\KrepselisController::class, 'getTickets'])->name('cart');
 Route::get('/admin/blockEvent', [\App\Http\Controllers\AdminController::class, 'blockEventAdmin']);
+Route::get('/admin/unconfirmedAccounts', [\App\Http\Controllers\AdminController::class, 'getUnconfirmedAccounts']);
+Route::get('/admin/confirmAccount', [\App\Http\Controllers\AdminController::class, 'confirmAccount']);
+Route::get('/admin/editUserPirkejas', [\App\Http\Controllers\AdminController::class, 'getDataForEditPirkejasAdmin']);
+Route::get('/admin/deleteUser', [\App\Http\Controllers\AdminController::class, 'deleteUserAdmin']);
+Route::get('/admin/editUserPardavejas', [\App\Http\Controllers\AdminController::class, 'getDataForEditPardavejasAdmin']);
+Route::post('confirmEditPardavejas', [\App\Http\Controllers\AdminController::class, 'confirmEditPardavejas']);
 
 //----------------------------User based routes----------------------------------------
 Route::get('login', [\App\Http\Controllers\VartotojasController::class, 'loginload']);
