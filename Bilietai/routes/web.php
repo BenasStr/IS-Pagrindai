@@ -53,3 +53,10 @@ Route::post('keistiDuomenis3', [\App\Http\Controllers\PirkejasController::class,
 //-----------------------------Adminas based routes---------------------------------
 Route::get('settings1', [\App\Http\Controllers\AdminController::class, 'settings']);
 Route::post('keistiDuomenis1', [\App\Http\Controllers\AdminController::class, 'keistiDuomenis']);
+
+
+//-----------------------------Istorija based routes---------------------------------
+Route::get('Istorija', [\App\Http\Controllers\IstorijaController::class, 'rodytiIstorija']);
+Route::post('perziuretiDetaliau', [\App\Http\Controllers\IstorijaController::class, 'perziuretiDetaliau']);
+Route::post('atsiliepimai', [\App\Http\Controllers\IstorijaController::class, 'atsiliepimai']);
+Route::post('naujasAtsiliepimas', [\App\Http\Controllers\IstorijaController::class, 'naujasAtsiliepimas']);
