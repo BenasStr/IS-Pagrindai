@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Renginys;
 use Illuminate\Http\Request;
 use App\Models\Atsiliepimas;
 use App\Models\Pirkejas;
