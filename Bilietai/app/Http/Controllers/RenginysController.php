@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Renginys;
 use App\Models\Atsiliepimas;
 use App\Models\Vartotojas;
+use App\Models\Bilietas;
 
 class RenginysController extends Controller
 {
@@ -18,7 +19,8 @@ class RenginysController extends Controller
 
     public function getEvent($id) {
         $event = Renginys::all()->where('id_Renginys', $id)->first();
-        return view('events/event', compact('event'));
+        $ticket_count = Bilietas::where('fk_Renginysid_Renginys', $id)->where('fk_Krepselisid_Krepselis', null)->get()->count();
+        return view('events/event', compact(['event', 'ticket_count']));
     }
 
     public function getFilteredEvents(Request $request) {

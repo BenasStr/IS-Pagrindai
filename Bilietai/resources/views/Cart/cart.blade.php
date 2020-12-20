@@ -9,12 +9,12 @@
             <li class="list-group-item">
                 {{ $event->Pavadinimas }}
                 <b>Data:</b> {{ $event->Data }}
-                <b>Laikas:</b> {{ $event->PradziosLaikas }}
+                <b>Laikas:</b> {{ date('H:i', strtotime($event->PradziosLaikas)) }}
 
             </li>
         @endforeach
     </ul>
     <div>
-{{--        <a class="btn-danger" href="{{  }}"--}}
+       <a class="btn-danger" href="{{ route('deleteCart', session()->get('id')) }}" style="color: black; text-decoration: none">Naikinti Krepšelį</a>
     </div>
 @endsection

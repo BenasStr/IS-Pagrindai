@@ -16,9 +16,11 @@
         </a>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('cart', 1 ) }}">Krepšelis</a>
-                </li>
+                @if(session()->get('id') != null)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('cart', session()->get('id') ) }}">Krepšelis</a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                 </li>
