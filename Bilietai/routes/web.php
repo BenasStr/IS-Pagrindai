@@ -24,6 +24,7 @@ Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'indexAdmin'
 Route::get('/admin/getEvents', [\App\Http\Controllers\AdminController::class, 'getEventsAdmin']);
 Route::get('/admin/getUsers', [\App\Http\Controllers\AdminController::class, 'getUsersAdmin']);
 Route::get('/admin/promoteEvent', [\App\Http\Controllers\AdminController::class, 'promoteEventAdmin']);
+Route::get('settings1', [\App\Http\Controllers\AdminController::class, 'settings']);
 Route::get('/admin/blockEvent', [\App\Http\Controllers\AdminController::class, 'blockEventAdmin']);
 Route::get('/admin/unconfirmedAccounts', [\App\Http\Controllers\AdminController::class, 'getUnconfirmedAccounts']);
 Route::get('/admin/confirmAccount', [\App\Http\Controllers\AdminController::class, 'confirmAccount']);
@@ -37,6 +38,13 @@ Route::get('/admin/deleteUserPardavejas', [\App\Http\Controllers\AdminController
 //----------------------------Cart based routes--------------------------------------
 Route::get('/cart/{id_cart}', [\App\Http\Controllers\KrepselisController::class, 'getTickets'])->name('cart');
 
+//----------------------------Cart based routes--------------------------------------
+Route::get('/cart/{id_cart}', [\App\Http\Controllers\KrepselisController::class, 'getTickets'])->name('cart');
+Route::get('/addToCart/{id}', [\App\Http\Controllers\KrepselisController::class, 'addToCart'])->name('addToCart');
+Route::get('/deleteCart/{id}', [\App\Http\Controllers\KrepselisController::class, 'deleteCart'])->name('deleteCart');
+Route::get('/addTicket/{id}', [\App\Http\Controllers\KrepselisController::class, 'addTicket'])->name('addTicket');
+Route::get('/removeTicket/{id}', [\App\Http\Controllers\KrepselisController::class, 'removeTicket'])->name('removeTicket');
+
 //----------------------------User based routes----------------------------------------
 Route::get('login', [\App\Http\Controllers\VartotojasController::class, 'loginload']);
 Route::post('loginconfirm', [\App\Http\Controllers\VartotojasController::class, 'login']);
@@ -46,8 +54,8 @@ Route::post('naujasVartotojas', [\App\Http\Controllers\VartotojasController::cla
 
 //-----------------------------Pardavejas based routes---------------------------------
 Route::get('settings2', [\App\Http\Controllers\PardavejasController::class, 'settings']);
+
 //-----------------------------Pirkejas based routes---------------------------------
 Route::get('settings3', [\App\Http\Controllers\PirkejasController::class, 'settings']);
 Route::post('keistiDuomenis3', [\App\Http\Controllers\PirkejasController::class, 'keistiDuomenis']);
-//-----------------------------Adminas based routes---------------------------------
-Route::get('settings1', [\App\Http\Controllers\AdminController::class, 'settings']);
+
