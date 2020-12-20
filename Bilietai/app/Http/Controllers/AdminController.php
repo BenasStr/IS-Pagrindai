@@ -72,8 +72,30 @@ class AdminController extends Controller
         return view('/AdminViews/editPirkejasAdmin', compact('user'));
     }
 
-    public function deleteUserAdmin(Request $request){
+    public function confirmEditPirkejas(Request $request){
+        $user = Vartotojas::with('pirkejas')
+            ->where('id_Vartotojas', $request->input('id'))
+            ->get()
+            ->first();
+        $user->Slaptazodis = $request->input('password');
+        $user->SukurimoData = $request->input('createDate');
+        $user->save();
+        if ($user->pirkejas != null){
+            $user->pirkejas["Taskai"] = $request->input('points');
+            $user->pirkejas->save();
+        }
+        return redirect('/admin/getUsers');
+    }
 
+    public function deleteUserPirkejasAdmin(Request $request){
+        $user = Vartotojas::with('pirkejas')
+            ->where('id_Vartotojas', $request->input('deleteUserPirkejas'))
+            ->get()
+            ->first();
+        if ($user->pirkejas != null)
+            $user->pirkejas->delete();
+        $user->delete();
+        return redirect('/admin/getUsers');
     }
 
     public function getDataForEditPardavejasAdmin(Request $request){
@@ -98,6 +120,13 @@ class AdminController extends Controller
         $user->pardavejas["Ivertinimas"] = $request->input('rating');
         $user->pardavejas["RenginiuSkaicius"] = $request->input('eventNum');
         $user->save();
-        return view('/AdminViews/usersAdmin');
+        $user->pardavejas->save();
+        return redirect('/admin/getUsers');
+    }
+
+    public function deleteUserPardavejasAdmin(Request $request){
+        $user = Vartotojas::where('id_Vartotojas', $request->input('deleteUserPirkejas'))->get()->first();
+        $user->delete();
+        return redirect('/admin/getUsers');
     }
 }

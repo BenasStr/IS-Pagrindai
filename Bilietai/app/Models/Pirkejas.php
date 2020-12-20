@@ -15,4 +15,8 @@ class Pirkejas extends Model
     public function vartotojas(){
         return $this->belongsTo(Vartotojas::class, 'fk_Vartotojasid_Vartotojas');
     }
+
+    public function atsiliepimas() {
+        return $this->hasMany(Atsiliepimas::class, 'fk_Pirkejasid_Pirkejas');
+    }
 }

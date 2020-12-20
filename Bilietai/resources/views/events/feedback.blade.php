@@ -7,8 +7,8 @@
     <ul class="list-group">
         @for($i = 0; $i < $count; $i++)
             <li class="list-group-item">
-                <b>Vardas:</b> {{ $users[$i]->Vardas }}
-                <b>Atsiliepimas: {{ $rewiews[$i]->Aprasymas }}</b>
+                <b>Vardas: </b>{{ $users[$i]->vartotojas['Vardas'] }}
+                <b>Atsiliepimas: </b>{{ $rewiews[$i]->Aprasymas }}
             </li>
         @endfor
     </ul>
