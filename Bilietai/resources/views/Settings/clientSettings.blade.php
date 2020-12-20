@@ -58,9 +58,9 @@
                     @endif
 
                     @if($pirkejoData -> NaujienlaiskioPrenumerata == 1)
-                        <td><input type="checkbox" stype="string" name="naujienlaiskis" value="{{ $pirkejoData -> NaujienlaiskioPrenumerata }}" checked></td>
+                        <td><input type="checkbox" stype="string" name="naujienlaiskis" value="1" checked></td>
                     @else
-                        <td><input type="checkbox" stype="string" name="naujienlaiskis" value="{{ $pirkejoData -> NaujienlaiskioPrenumerata }}"></td>
+                        <td><input type="checkbox" stype="string" name="naujienlaiskis" value="1"></td>
                     @endif
                 </tr>
             </table>

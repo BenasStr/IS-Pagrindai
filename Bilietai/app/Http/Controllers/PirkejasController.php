@@ -42,6 +42,30 @@ class PirkejasController extends Controller
         $Lytis = $request->input("lytis");
         $Naujienos = $request->input("naujienlaiskis");
 
+        $visiVartotojai = Vartotojas::all();
+
+
+        $prisijungusioDuomenys = Vartotojas::all()
+            ->where("id_Vartotojas",$vartotojoID)
+            ->first();
+
+
+        if($prisijungusioDuomenys->ElPastas != $ElPastas)
+        {
+            foreach($visiVartotojai as $pastas)
+            {
+                if($pastas->ElPastas == $ElPastas)
+                {
+                    return redirect('settings3')->with('danger', 'Pašto adresas jau panaudotas!');
+                }
+            }
+        }
+
+        if(empty($Naujienos))
+        {
+            $Naujienos = 0;
+        }
+
         $rules = [
             'vardas' => 'required|string|min:2|max:255',
             'pavarde' => 'required|string|min:2|max:255',

@@ -54,8 +54,20 @@ Route::post('naujasVartotojas', [\App\Http\Controllers\VartotojasController::cla
 
 //-----------------------------Pardavejas based routes---------------------------------
 Route::get('settings2', [\App\Http\Controllers\PardavejasController::class, 'settings']);
-
+Route::post('keistiDuomenis2', [\App\Http\Controllers\PardavejasController::class, 'keistiDuomenis']);
 //-----------------------------Pirkejas based routes---------------------------------
 Route::get('settings3', [\App\Http\Controllers\PirkejasController::class, 'settings']);
 Route::post('keistiDuomenis3', [\App\Http\Controllers\PirkejasController::class, 'keistiDuomenis']);
+//-----------------------------Adminas based routes---------------------------------
+Route::get('settings1', [\App\Http\Controllers\AdminController::class, 'settings']);
+Route::post('keistiDuomenis1', [\App\Http\Controllers\AdminController::class, 'keistiDuomenis']);
 
+
+//-----------------------------Istorija based routes---------------------------------
+Route::get('Istorija', [\App\Http\Controllers\IstorijaController::class, 'rodytiIstorija']);
+Route::post('perziuretiDetaliau', [\App\Http\Controllers\IstorijaController::class, 'perziuretiDetaliau']);
+Route::post('atsiliepimai', [\App\Http\Controllers\IstorijaController::class, 'atsiliepimai']);
+Route::post('naujasAtsiliepimas', [\App\Http\Controllers\IstorijaController::class, 'naujasAtsiliepimas']);
+//-----------------------------Pirkejas based routes---------------------------------
+Route::get('settings3', [\App\Http\Controllers\PirkejasController::class, 'settings']);
+Route::post('keistiDuomenis3', [\App\Http\Controllers\PirkejasController::class, 'keistiDuomenis']);

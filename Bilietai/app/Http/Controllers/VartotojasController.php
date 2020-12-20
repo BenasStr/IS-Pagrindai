@@ -103,13 +103,14 @@ class VartotojasController extends Controller
                 break;
 //          Pardavejas
             case '2':
-                $vartotojas = new Vartotojas();
 
+                $vartotojas = new Vartotojas();
                 $vartotojas->ElPastas = $ElPastas;
                 $vartotojas->Slaptazodis = $Slaptazodis;
                 $vartotojas->SukurimoData = Carbon::now();
                 $vartotojas->Tipas = 2;
                 $vartotojas->save();
+
                 break;
 //          Vartotojas
             case '3':
@@ -125,6 +126,7 @@ class VartotojasController extends Controller
                 $vartotojoID = $vartotojas->id_Vartotojas;
 
                 $pirkejas->fk_Vartotojasid_Vartotojas = $vartotojoID;
+                $pirkejas->NaujienlaiskioPrenumerata = 0;
                 $pirkejas->save();
                 $pirkejoID = $pirkejas->id_Pirkejas;
 

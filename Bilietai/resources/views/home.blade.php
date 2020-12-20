@@ -29,6 +29,11 @@
                 </li>
             </ul>
             <ul class="navbar-nav">
+                @if(session()->get('tipas') == 3)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('Istorija') }}" style="color: black; text-decoration: none">Bilietų istorija</a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     @if(session()->get('tipas') == 1)
                         <a class="nav-link" href="{{ url('settings1') }}" style="color: black; text-decoration: none">Nustatymai</a>
