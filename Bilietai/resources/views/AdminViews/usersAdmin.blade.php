@@ -20,7 +20,7 @@
                 <td>{{$data->SukurimoData}}</td>
                 @if ($data->pirkejas != null)
                     <td>{{$data->pirkejas["Taskai"]}}</td>
-                    <td>{{$data->pirkejas["NaujienlaiskioPrenumerata"]}}</td>
+                    <td>@if($data->pirkejas["NaujienlaiskioPrenumerata"] == 0)Ne @else Taip @endif</td>
                     <td>{{$data->pirkejas["Amzius"]}}</td>
                     <td>{{$data->pirkejas["TelefonoNumeris"]}}</td>
                 @else
@@ -29,6 +29,11 @@
                     <td>-</td>
                     <td>-</td>
                 @endif
+                <td>
+                    <form method="get" action="{{url('/admin/editUserPirkejas')}}">
+                        <button class="btn btn-success" type="submit" value="{{$data->id_Vartotojas}}" name="editUserPirkejas">Edit</button>
+                    </form>
+                    </td>
             </tr>
         @endforeach
     </table>
@@ -56,7 +61,7 @@
                     <td>{{$data->pardavejas["ImonesPavadinimas"]}}</td>
                     <td>{{$data->pardavejas["ImonesKodas"]}}</td>
                     <td>{{$data->pardavejas["Adresas"]}}</td>
-                    <td>{{$data->pardavejas["ArPatvirtintas"]}}</td>
+                    <td>@if($data->pardavejas["ArPatvirtintas"] == 0)Ne @else Taip @endif</td>
                     <td>{{$data->pardavejas["Ivertinimas"]}}</td>
                     <td>{{$data->pardavejas["RenginiuSkaicius"]}}</td>
                     <td>{{$data->pardavejas["TelefonoNumeris"]}}</td>
@@ -69,6 +74,11 @@
                     <td>-</td>
                     <td>-</td>
                 @endif
+                <td>
+                    <form method="get" action="{{url('/admin/editUserPardavejas')}}">
+                        <button class="btn btn-success" type="submit" value="{{$data->id_Vartotojas}}" name="editUserPardavejas">Edit</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table>

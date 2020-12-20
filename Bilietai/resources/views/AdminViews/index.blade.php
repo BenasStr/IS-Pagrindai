@@ -26,6 +26,12 @@
             <button class="btn btn-success" type="submit" name="paskyruSarasas">Rodyti paskyras</button>
         </form>
     </div>
+    <!--PATVIRTINTI PASKYRAS-->
+    <div class="col-sm-2">
+        <form class="form-inline" action="{{url('/admin/unconfirmedAccounts')}}" method="get">
+            <button class="btn btn-success" type="submit" name="patvirtintiPaskyras">Patvirtinti paskyras</button>
+        </form>
+    </div>
 </div>
     @yield('adminContent')
 @endsection

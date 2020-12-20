@@ -34,7 +34,14 @@ class VartotojasController extends Controller
                 session(['id'=>$data->id_Vartotojas]);
                 session(['tipas'=>$data->Tipas]);
 
-                return redirect('/')->with('success', 'Sėkmingai prisijungta!');
+                if($data->Tipas == 1)
+                {
+                    return redirect('/admin')->with('success', 'Sėkmingai prisijungta!');
+                }
+                else
+                {
+                    return redirect('/')->with('success', 'Sėkmingai prisijungta!');
+                }
 
             } else {
                 return redirect('login')->with('danger', 'Neteisingi prisijungimo duomenys!');
@@ -129,4 +136,5 @@ class VartotojasController extends Controller
 
         return redirect('/')->with('success', 'Sėkmingai priregistruota!');
     }
+
 }

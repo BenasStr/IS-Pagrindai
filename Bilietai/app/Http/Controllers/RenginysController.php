@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Renginys;
+use App\Models\Atsiliepimas;
+use App\Models\Vartotojas;
 
 class RenginysController extends Controller
 {
     public function getAllEvents() {
-        $events = Renginys::all();
-        $count = Renginys::all()->count();
+        $events = Renginys::orderBy('Prioritetas', 'desc')->where('Prioritetas', '!=', '0')->get();
+        $count = $events->count();
         return view('events/events', compact(['events', 'count']));
     }
 

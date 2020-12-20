@@ -11,4 +11,8 @@ class Krepselis extends Model
     protected $fillable = ['SukurimoData', 'KrepselioKodas', 'fk_Pirkejasid_Pirkejas'];
     protected $primaryKey = 'id_Krepselis';
     public $timestamps = false;
+
+    public function bilietai() {
+        return $this->hasMany(Bilietas::class, 'fk_Krepselisid_Krepselis');
+    }
 }

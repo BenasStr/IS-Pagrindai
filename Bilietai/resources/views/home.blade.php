@@ -17,17 +17,33 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="{{ route('cart', 1 ) }}">Krepšelis</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                 </li>
             </ul>
-            @if (session()->get('id') == null)
-                <a href="{{ url('/login') }}" style="color: black; text-decoration: none">Login</a>
-            @else
-                <a href="{{ url('/logout') }}" style="color: black; text-decoration: none">Logout</a>
-            @endif
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    @if(session()->get('tipas') == 1)
+                        <a class="nav-link" href="{{ url('settings1') }}" style="color: black; text-decoration: none">Nustatymai</a>
+                    @endif
+                    @if(session()->get('tipas') == 2)
+                        <a class="nav-link" href="{{ url('settings2') }}" style="color: black; text-decoration: none">Nustatymai</a>
+                    @endif
+                    @if(session()->get('tipas') == 3)
+                        <a class="nav-link" href="{{ url('settings3') }}" style="color: black; text-decoration: none">Nustatymai</a>
+                    @endif
+                </li>
+                <li class="nav-item">
+                    @if (session()->get('id') == null)
+                        <a class="nav-link" href="{{ url('/login') }}" style="color: black; text-decoration: none">Login</a>
+                    @else
+                        <a class="nav-link" href="{{ url('/logout') }}" style="color: black; text-decoration: none">Logout</a>
+                    @endif
+                </li>
+            </ul>
+
         </div>
     </nav>
 

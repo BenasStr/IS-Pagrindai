@@ -10,6 +10,11 @@ use App\Models\Pardavejas;
 
 class AdminController extends Controller
 {
+    public function settings()
+    {
+        return view('Settings/adminSettings');
+    }
+
     public function indexAdmin(){
         return view('AdminViews/index');
     }
@@ -26,8 +31,6 @@ class AdminController extends Controller
     }
 
     public function promoteEventAdmin(Request $request){
-        //echo $request->input('renginiuKelimas');
-
         $event = Renginys::all()
             ->where('id_Renginys', $request->input('renginiuKelimas'))
             ->first();
@@ -35,5 +38,95 @@ class AdminController extends Controller
         $event -> Prioritetas = 11;
         $event -> save();
         return redirect('admin/getEvents');
+    }
+
+    public function blockEventAdmin(Request $request){
+        $event = Renginys::all()
+            ->where('id_Renginys', $request->input('renginiuBlokavimas'))
+            ->first();
+
+        $event -> Prioritetas = 0;
+        $event -> save();
+        return redirect('admin/getEvents');
+    }
+
+    public function getUnconfirmedAccounts(){
+        $pardavejai = Pardavejas::where('ArPatvirtintas', 0)
+            ->get();
+        return view('AdminViews/unconfirmedAccountList', compact('pardavejai'));
+    }
+
+    public function confirmAccount(Request $request){
+        $pardavejas = Pardavejas::where('id_Pardavejas', $request->input('patvirtintiPaskyra'))->first();
+        $pardavejas->ArPatvirtintas = 1;
+        $pardavejas->save();
+        return redirect('/admin/unconfirmedAccounts');
+    }
+
+    public function getDataForEditPirkejasAdmin(Request $request){
+        $user = Vartotojas::with('pirkejas')
+            ->where('id_Vartotojas', $request->input('editUserPirkejas'))
+            ->get()
+            ->first();
+
+        return view('/AdminViews/editPirkejasAdmin', compact('user'));
+    }
+
+    public function confirmEditPirkejas(Request $request){
+        $user = Vartotojas::with('pirkejas')
+            ->where('id_Vartotojas', $request->input('id'))
+            ->get()
+            ->first();
+        $user->Slaptazodis = $request->input('password');
+        $user->SukurimoData = $request->input('createDate');
+        $user->save();
+        if ($user->pirkejas != null){
+            $user->pirkejas["Taskai"] = $request->input('points');
+            $user->pirkejas->save();
+        }
+        return redirect('/admin/getUsers');
+    }
+
+    public function deleteUserPirkejasAdmin(Request $request){
+        $user = Vartotojas::with('pirkejas')
+            ->where('id_Vartotojas', $request->input('deleteUserPirkejas'))
+            ->get()
+            ->first();
+        if ($user->pirkejas != null)
+            $user->pirkejas->delete();
+        $user->delete();
+        return redirect('/admin/getUsers');
+    }
+
+    public function getDataForEditPardavejasAdmin(Request $request){
+        $user = Vartotojas::with('pardavejas')
+            ->where('id_Vartotojas', $request->input('editUserPardavejas'))
+            ->get()
+            ->first();
+        return view('/AdminViews/editPardavejasAdmin', compact('user'));
+    }
+
+    public function confirmEditPardavejas(Request $request){
+        //Validacijas padaryt
+
+        $user = Vartotojas::with('pardavejas')
+            ->where('id_Vartotojas', $request->input('id'))
+            ->get()
+            ->first();
+
+        $user->Slaptazodis = $request->input('password');
+        $user->SukurimoData = $request->input('createDate');
+        $user->pardavejas["ImonesKodas"] = $request->input('code');
+        $user->pardavejas["Ivertinimas"] = $request->input('rating');
+        $user->pardavejas["RenginiuSkaicius"] = $request->input('eventNum');
+        $user->save();
+        $user->pardavejas->save();
+        return redirect('/admin/getUsers');
+    }
+
+    public function deleteUserPardavejasAdmin(Request $request){
+        $user = Vartotojas::where('id_Vartotojas', $request->input('deleteUserPirkejas'))->get()->first();
+        $user->delete();
+        return redirect('/admin/getUsers');
     }
 }
