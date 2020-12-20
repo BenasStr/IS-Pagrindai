@@ -31,3 +31,11 @@ Route::post('loginconfirm', [\App\Http\Controllers\VartotojasController::class, 
 Route::get('logout', [\App\Http\Controllers\VartotojasController::class, 'logout']);
 Route::get('register', [\App\Http\Controllers\VartotojasController::class, 'registerload']);
 Route::post('naujasVartotojas', [\App\Http\Controllers\VartotojasController::class, 'registerNew']);
+
+//-----------------------------Pardavejas based routes---------------------------------
+Route::get('settings2', [\App\Http\Controllers\PardavejasController::class, 'settings']);
+//-----------------------------Pirkejas based routes---------------------------------
+Route::get('settings3', [\App\Http\Controllers\PirkejasController::class, 'settings']);
+Route::post('keistiDuomenis3', [\App\Http\Controllers\PirkejasController::class, 'keistiDuomenis']);
+//-----------------------------Adminas based routes---------------------------------
+Route::get('settings1', [\App\Http\Controllers\AdminController::class, 'settings']);
