@@ -24,14 +24,11 @@
                         <a class="nav-link" href="{{ route('cart', session()->get('id') ) }}">Krepšelis</a>
                     </li>
                 @endif
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                    @if(session()->get('tipas') == 2)
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('renginiulangas') }}" style="color: black; text-decoration: none">Renginių kūrimas</a>
-                        </li>
-                    @endif
+                @if(session()->get('tipas') == 2)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('renginiulangas') }}" style="color: black; text-decoration: none">Renginių kūrimas</a>
+                    </li>
+                @endif
             </ul>
             <ul class="navbar-nav">
                 @if(session()->get('tipas') == 3)

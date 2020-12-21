@@ -21,7 +21,8 @@ class RenginysController extends Controller
 
     public function getEvent($id) {
         $event = Renginys::all()->where('id_Renginys', $id)->first();
-        return view('events/event', compact('event'));
+        $ticket_count = Bilietas::where('fk_Renginysid_Renginys', $id)->where('fk_Krepselisid_Krepselis', null)->get()->count();
+        return view('events/event', compact(['event', 'ticket_count']));
     }
 
     public function getFilteredEvents(Request $request) {
@@ -51,7 +52,6 @@ class RenginysController extends Controller
             'Miestas' => 'required|string|max:255',
             'Adresas' => 'required|string|max:255',
             'Pavadinimas' => 'required|string|max:255',
-            'NuolaidosKodai' => 'required|string|max:255',
         ];
 
         $validator = Validator::make($request->all(), $rules);

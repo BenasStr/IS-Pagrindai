@@ -13,6 +13,5 @@
             </li>
             <?php $i++ ?>
         @endforeach
-
     </ul>
 @endsection

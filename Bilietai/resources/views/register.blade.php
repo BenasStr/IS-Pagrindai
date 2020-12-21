@@ -14,7 +14,7 @@
 
             <tr>
                 <td><h3>Slaptažodis:</h3></td>
-                <td><input type="text" name="slaptazodis" value=""></td>
+                <td><input type="password" name="slaptazodis" value=""></td>
                 <td><p class="text-danger">{{ $errors->first('slaptazodis') }}</p></td>
             </tr>
             <tr>
