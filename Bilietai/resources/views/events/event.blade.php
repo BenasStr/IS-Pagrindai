@@ -23,9 +23,6 @@
         <div class="col-sm-6 text-center"></div>
     </div>
     <div class="row">
-    @if(session()->get('id') != null && $ticket_count > 0)
-            <a class="btn btn-info" href="{{ route('addToCart', $event->id_Renginys ) }}" style="position: absolute; right: 40px;">Pridėti į krepšelį</a>
-    @endif
-        <a class="btn btn-success" href="{{ route('feedback', $event->id_Renginys ) }}" style="right: 40px;">Peržiūrėti atsiliepimus</a>
+        <a class="btn btn-success" href="{{ route('feedback', $event->id_Renginys ) }}" style="position: absolute; right: 40px;">Peržiūrėti atsiliepimus</a>
     </div>
 @endsection

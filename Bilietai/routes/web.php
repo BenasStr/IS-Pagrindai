@@ -72,3 +72,17 @@ Route::post('naujasAtsiliepimas', [\App\Http\Controllers\IstorijaController::cla
 //-----------------------------Pirkejas based routes---------------------------------
 Route::get('settings3', [\App\Http\Controllers\PirkejasController::class, 'settings']);
 Route::post('keistiDuomenis3', [\App\Http\Controllers\PirkejasController::class, 'keistiDuomenis']);
+
+
+//-----------------------------Renginys based routes---------------------------------
+Route::get('renginiulangas', [\App\Http\Controllers\RenginysController::class, 'atidarytilanga']);
+Route::post('rengkurimas', [\App\Http\Controllers\RenginysController::class, 'rkurimas']);
+Route::get('/eventedit/{id}', [\App\Http\Controllers\RenginysController::class, 'rredagavimas'])->name('rredagavimas');
+Route::post('/renginionaujinimas/{id}', [\App\Http\Controllers\RenginysController::class, 'naujinimas']);
+Route::get('/salintirengini/{id}', [\App\Http\Controllers\RenginysController::class, 'delete'])->name('delete');
+Route::post('kurtinuolaida/{id}', [\App\Http\Controllers\RenginysController::class, 'kurtinuolaida'])->name('kurtinuolaida');
+Route::get('nuolaidoslangas/{id}', [\App\Http\Controllers\RenginysController::class, 'nuolaidoslangas'])->name('nuolaidoslangas');
+
+//-----------------------------Bilietas based routes---------------------------------
+Route::get('/bilietulangas/{id}', [\App\Http\Controllers\BilietasController::class, 'atidarytilangab'])->name('bilietulangas');
+Route::post('bilietukurimas/{id}', [\App\Http\Controllers\BilietasController::class, 'bkurimas']);
