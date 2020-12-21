@@ -1,6 +1,14 @@
 @extends('home')
 @section('content')
 
+
+    <?php
+            $tipas  = session()->get('tipas');
+            if($tipas != 1)
+            {
+                die("Negalima patekti dėl teisių trūkumo");
+            }
+        ?>
     <!--VARTOTOJU PAIESKAI-->
 <div class="row" style="margin-top: 10px; margin-bottom: 10px; margin-left: 25px">
     <div class="col-sm-2">

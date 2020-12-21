@@ -5,11 +5,14 @@
         <div class="col-sm-12 text-center"><h1>Komentarai:</h1></div>
     </div>
     <ul class="list-group">
-        @for($i = 0; $i < $count; $i++)
+        <?php $i=0 ?>
+        @foreach ($users as $user)
             <li class="list-group-item">
-                <b>Vardas:</b> {{ $users[$i]->vartotojas["Vardas"] }}
-                <b>Atsiliepimas:</b> {{ $rewiews[$i]->Aprasymas }}
+                <b>Vardas: </b>{{ $user->vartotojas['Vardas'] }}
+                <b>Atsiliepimas: </b>{{ $rewiews[$i]->Aprasymas }}
             </li>
-        @endfor
+            <?php $i++ ?>
+        @endforeach
+
     </ul>
 @endsection
