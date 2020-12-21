@@ -1,5 +1,6 @@
 @extends('home')
 @section('content')
+
 <?php
     $tipas  = session()->get('tipas');
     if($tipas != 1)

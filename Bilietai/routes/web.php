@@ -24,6 +24,7 @@ Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'indexAdmin'
 Route::get('/admin/getEvents', [\App\Http\Controllers\AdminController::class, 'getEventsAdmin']);
 Route::get('/admin/getUsers', [\App\Http\Controllers\AdminController::class, 'getUsersAdmin']);
 Route::get('/admin/promoteEvent', [\App\Http\Controllers\AdminController::class, 'promoteEventAdmin']);
+Route::get('settings1', [\App\Http\Controllers\AdminController::class, 'settings']);
 Route::get('/admin/blockEvent', [\App\Http\Controllers\AdminController::class, 'blockEventAdmin']);
 Route::get('/admin/unconfirmedAccounts', [\App\Http\Controllers\AdminController::class, 'getUnconfirmedAccounts']);
 Route::get('/admin/confirmAccount', [\App\Http\Controllers\AdminController::class, 'confirmAccount']);
@@ -40,6 +41,13 @@ Route::get('admin/deleteReview', [\App\Http\Controllers\AdminController::class, 
 //----------------------------Cart based routes--------------------------------------
 Route::get('/cart/{id_cart}', [\App\Http\Controllers\KrepselisController::class, 'getTickets'])->name('cart');
 
+//----------------------------Cart based routes--------------------------------------
+Route::get('/cart/{id_cart}', [\App\Http\Controllers\KrepselisController::class, 'getTickets'])->name('cart');
+Route::get('/addToCart/{id}', [\App\Http\Controllers\KrepselisController::class, 'addToCart'])->name('addToCart');
+Route::get('/deleteCart/{id}', [\App\Http\Controllers\KrepselisController::class, 'deleteCart'])->name('deleteCart');
+Route::get('/addTicket/{id}', [\App\Http\Controllers\KrepselisController::class, 'addTicket'])->name('addTicket');
+Route::get('/removeTicket/{id}', [\App\Http\Controllers\KrepselisController::class, 'removeTicket'])->name('removeTicket');
+
 //----------------------------User based routes----------------------------------------
 Route::get('login', [\App\Http\Controllers\VartotojasController::class, 'loginload']);
 Route::post('loginconfirm', [\App\Http\Controllers\VartotojasController::class, 'login']);
@@ -49,8 +57,34 @@ Route::post('naujasVartotojas', [\App\Http\Controllers\VartotojasController::cla
 
 //-----------------------------Pardavejas based routes---------------------------------
 Route::get('settings2', [\App\Http\Controllers\PardavejasController::class, 'settings']);
+Route::post('keistiDuomenis2', [\App\Http\Controllers\PardavejasController::class, 'keistiDuomenis']);
 //-----------------------------Pirkejas based routes---------------------------------
 Route::get('settings3', [\App\Http\Controllers\PirkejasController::class, 'settings']);
 Route::post('keistiDuomenis3', [\App\Http\Controllers\PirkejasController::class, 'keistiDuomenis']);
 //-----------------------------Adminas based routes---------------------------------
 Route::get('settings1', [\App\Http\Controllers\AdminController::class, 'settings']);
+Route::post('keistiDuomenis1', [\App\Http\Controllers\AdminController::class, 'keistiDuomenis']);
+
+
+//-----------------------------Istorija based routes---------------------------------
+Route::get('Istorija', [\App\Http\Controllers\IstorijaController::class, 'rodytiIstorija']);
+Route::post('perziuretiDetaliau', [\App\Http\Controllers\IstorijaController::class, 'perziuretiDetaliau']);
+Route::post('atsiliepimai', [\App\Http\Controllers\IstorijaController::class, 'atsiliepimai']);
+Route::post('naujasAtsiliepimas', [\App\Http\Controllers\IstorijaController::class, 'naujasAtsiliepimas']);
+//-----------------------------Pirkejas based routes---------------------------------
+Route::get('settings3', [\App\Http\Controllers\PirkejasController::class, 'settings']);
+Route::post('keistiDuomenis3', [\App\Http\Controllers\PirkejasController::class, 'keistiDuomenis']);
+
+
+//-----------------------------Renginys based routes---------------------------------
+Route::get('renginiulangas', [\App\Http\Controllers\RenginysController::class, 'atidarytilanga']);
+Route::post('rengkurimas', [\App\Http\Controllers\RenginysController::class, 'rkurimas']);
+Route::get('/eventedit/{id}', [\App\Http\Controllers\RenginysController::class, 'rredagavimas'])->name('rredagavimas');
+Route::post('/renginionaujinimas/{id}', [\App\Http\Controllers\RenginysController::class, 'naujinimas']);
+Route::get('/salintirengini/{id}', [\App\Http\Controllers\RenginysController::class, 'delete'])->name('delete');
+Route::post('kurtinuolaida/{id}', [\App\Http\Controllers\RenginysController::class, 'kurtinuolaida'])->name('kurtinuolaida');
+Route::get('nuolaidoslangas/{id}', [\App\Http\Controllers\RenginysController::class, 'nuolaidoslangas'])->name('nuolaidoslangas');
+
+//-----------------------------Bilietas based routes---------------------------------
+Route::get('/bilietulangas/{id}', [\App\Http\Controllers\BilietasController::class, 'atidarytilangab'])->name('bilietulangas');
+Route::post('bilietukurimas/{id}', [\App\Http\Controllers\BilietasController::class, 'bkurimas']);
