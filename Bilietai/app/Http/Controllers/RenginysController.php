@@ -20,7 +20,6 @@ class RenginysController extends Controller
     }
 
     public function getEvent($id) {
-
         $event = Renginys::all()->where('id_Renginys', $id)->first();
         return view('events/event', compact('event'));
     }
