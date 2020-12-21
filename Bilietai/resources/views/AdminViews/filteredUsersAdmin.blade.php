@@ -21,10 +21,17 @@
                 <td>{{$usersPirkejai[$i]->Pavarde}}</td>
                 <td>{{$usersPirkejai[$i]->ElPastas}}</td>
                 <td>{{$usersPirkejai[$i]->SukurimoData}}</td>
+                @if ($usersPirkejai[$i]->pirkejas != null)
                 <td>{{$usersPirkejai[$i]->pirkejas["Taskai"]}}</td>
                 <td>@if($usersPirkejai[$i]->pirkejas["NaujienlaiskioPrenumerata"] == 1)Taip @else Ne @endif</td>
                 <td>{{$usersPirkejai[$i]->pirkejas["Amzius"]}}</td>
                 <td>{{$usersPirkejai[$i]->pirkejas["TelefonoNumeris"]}}</td>
+                @else
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                @endif
             </tr>
         @endfor
     </table>
@@ -53,6 +60,7 @@
                 <td>{{$usersPardavejai[$i]->Pavarde}}</td>
                 <td>{{$usersPardavejai[$i]->ElPastas}}</td>
                 <td>{{$usersPardavejai[$i]->SukurimoData}}</td>
+                @if($usersPardavejai[$i]->pardavejas != null)
                 <td>{{$usersPardavejai[$i]->pardavejas["ImonesPavadinimas"]}}</td>
                 <td>{{$usersPardavejai[$i]->pardavejas["ImonesKodas"]}}</td>
                 <td>{{$usersPardavejai[$i]->pardavejas["Adresas"]}}</td>
@@ -60,6 +68,15 @@
                 <td>{{$usersPardavejai[$i]->pardavejas["Ivertinimas"]}}</td>
                 <td>{{$usersPardavejai[$i]->pardavejas["RenginiuSkaicius"]}}</td>
                 <td>{{$usersPardavejai[$i]->pardavejas["TelefonoNumeris"]}}</td>
+                @else
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                @endif
             </tr>
         @endfor
     </table>

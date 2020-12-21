@@ -33,6 +33,11 @@
                         <button class="btn btn-danger" type="submit" name="renginiuBlokavimas" value="{{$data->id_Renginys}}">Blokuoti</button>
                     </form>
                 </td>
+                <td>
+                    <form method="get" action="{{url('admin/getReviewsAdmin')}}">
+                        <button class="btn btn-warning" type="submit" name="renginioAtsiliepimai" value="{{$data->id_Renginys}}">Atsiliepimai</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
     </table>
