@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Vartotojas;
 use App\Models\Renginys;
 use App\Models\Pardavejas;
+use App\Models\Atsiliepimas;
+
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
@@ -100,7 +102,7 @@ class AdminController extends Controller
 
         $event -> Prioritetas = 11;
         $event -> save();
-        return redirect('admin/getEvents');
+        return redirect('admin/getEvents')->with('success', 'Sėkmingai iškeltas');
     }
 
     public function blockEventAdmin(Request $request){
@@ -110,7 +112,7 @@ class AdminController extends Controller
 
         $event -> Prioritetas = 0;
         $event -> save();
-        return redirect('admin/getEvents');
+        return redirect('admin/getEvents')->with('success', 'Sėkmingai blokuotas');
     }
 
     public function getUnconfirmedAccounts(){
@@ -123,7 +125,7 @@ class AdminController extends Controller
         $pardavejas = Pardavejas::where('id_Pardavejas', $request->input('patvirtintiPaskyra'))->first();
         $pardavejas->ArPatvirtintas = 1;
         $pardavejas->save();
-        return redirect('/admin/unconfirmedAccounts');
+        return redirect('/admin/unconfirmedAccounts')->with('success', 'Paskyra sėkmingai patvirtinta');
     }
 
     public function getDataForEditPirkejasAdmin(Request $request){
@@ -136,6 +138,15 @@ class AdminController extends Controller
     }
 
     public function confirmEditPirkejas(Request $request){
+        $rules = [
+            'createDate' => 'date',
+            'password' => 'required|string|min:5|max:15'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()){
+            return redirect('/admin/getUsers')->with('danger', 'Blogi duomenys!');
+        }
         $user = Vartotojas::with('pirkejas')
             ->where('id_Vartotojas', $request->input('id'))
             ->get()
@@ -147,7 +158,7 @@ class AdminController extends Controller
             $user->pirkejas["Taskai"] = $request->input('points');
             $user->pirkejas->save();
         }
-        return redirect('/admin/getUsers');
+        return redirect('/admin/getUsers')->with('success', 'Redagavimas sėkmingas');;
     }
 
     public function deleteUserPirkejasAdmin(Request $request){
@@ -158,7 +169,7 @@ class AdminController extends Controller
         if ($user->pirkejas != null)
             $user->pirkejas->delete();
         $user->delete();
-        return redirect('/admin/getUsers');
+        return redirect('/admin/getUsers')->with('success', 'Sėkmingai ištrinta');
     }
 
     public function getDataForEditPardavejasAdmin(Request $request){
@@ -170,7 +181,18 @@ class AdminController extends Controller
     }
 
     public function confirmEditPardavejas(Request $request){
-        //Validacijas padaryt
+        $rules = [
+            'createDate' => 'date',
+            'password' => 'required|string|min:5|max:15',
+            'code' =>'required|string|min:5|max:20',
+            'rating' => 'numeric',
+            'eventNum' => 'numeric'
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()){
+            return redirect('/admin/getUsers')->with('danger', 'Blogi duomenys!');
+        }
 
         $user = Vartotojas::with('pardavejas')
             ->where('id_Vartotojas', $request->input('id'))
@@ -184,27 +206,16 @@ class AdminController extends Controller
         $user->pardavejas["RenginiuSkaicius"] = $request->input('eventNum');
         $user->save();
         $user->pardavejas->save();
-        return redirect('/admin/getUsers');
+        return redirect('/admin/getUsers')->with('success', 'Redagavimas sėkmingas');
     }
 
     public function deleteUserPardavejasAdmin(Request $request){
         $user = Vartotojas::where('id_Vartotojas', $request->input('deleteUserPirkejas'))->get()->first();
         $user->delete();
-        return redirect('/admin/getUsers');
+        return redirect('/admin/getUsers')->with('success', 'Sėkmingai ištrinta');
     }
 
     public function getFilteredUsersAdmin(Request $request){
-//        $key = "/".$request->input('search')."/i";
-//        $allEvents = Renginys::all();
-//        $events = array();
-//        foreach ($allEvents as $event) {
-//            $name = $event->Pavadinimas;
-//            if(preg_match($key, $name)){
-//                array_push($events, $event);
-//            }
-//        }
-//        $count = count($events);
-//        return view('events/events', compact(['events', 'count']));
         $key = "/".$request->input('searchAdmin')."/i";
         $allUsers = Vartotojas::all();
         //echo $allUsers;
@@ -228,7 +239,16 @@ class AdminController extends Controller
         return view('/AdminViews/filteredUsersAdmin', compact(['usersPirkejai', 'usersPardavejai', 'countPirkejai', 'countPardavejai']));
     }
 
-//    public function deleteReviewsAdmin(Request $request){
-//
-//    }
+    public function getReviewAdmin(Request $request){
+        $reviews = Renginys::with('atsiliepimas')->where('id_Renginys', $request->input('renginioAtsiliepimai'))->get()->first();
+        $count = count($reviews->atsiliepimas);
+        return view('AdminViews/eventReviews', compact('reviews', 'count'));
+
+    }
+
+    public function deleteReviewsAdmin(Request $request){
+        $review = Atsiliepimas::where('id_Atsiliepimas', $request->input('deleteReview'))->get()->first();
+        $review->delete();
+        return redirect('admin/getEvents')->with('success', 'Sėkmingai ištrinta');
+    }
 }
